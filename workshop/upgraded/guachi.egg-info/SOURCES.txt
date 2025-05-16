@@ -1,6 +1,7 @@
 MANIFEST.in
 README.rst
 distribute_setup.py
+pyproject.toml
 setup.py
 docs/Makefile
 guachi/__init__.py

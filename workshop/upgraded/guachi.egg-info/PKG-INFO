@@ -4,36 +4,38 @@ Version: 0.0.6
 Summary: Global, persistent configurations as dictionaries
 Home-page: http://code.google.com/p/guachi
 Author: Alfredo Deza
-Author-email: alfredodeza [at] gmail [dot] com
+Author-email: Alfredo Deza <alfredodeza@gmail.com>
 License: MIT
-Keywords: configuration management persistent dictionaries dictionary parse map mapping
+Keywords: configuration,management,persistent,dictionaries,dictionary,parse,map,mapping
 Classifier: Development Status :: 4 - Beta
 Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Topic :: Software Development :: Build Tools
-Classifier: Programming Language :: Python :: 2.5
-Classifier: Programming Language :: Python :: 2.6
-Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst
 Dynamic: author
-Dynamic: author-email
-Dynamic: classifier
-Dynamic: description
 Dynamic: home-page
-Dynamic: keywords
-Dynamic: license
-Dynamic: summary
 
+README
+======
 When projects start to grow, the need for a globally accessible configuration
 manager is obvious.
 
-Having configurations mapped to dictionaries is really useful, but can create a
+Having configurations mapped to dictionaries is really useful, but can create a 
 problem with memory.
 
-**Guachi** not only holds persistent dictionaries on disk, but it also maps
-INI style keys to dictioanry keys, and can fill in the default values if some
+**Guachi** not only holds persistent dictionaries on disk, but it also maps 
+INI style keys to dictionary keys, and can fill in the default values if some 
 of them are missing.
 
-You do not need to know anything about how **guachi** stores the values, just
+You do not need to know anything about how **guachi** stores the values, just 
 treat it like a regular dictionary!
 
 User Interaction
@@ -42,7 +44,7 @@ Let's assume you are dealing with a Twitter application that uses a ``ini`` file
 This is a sampla INI file and how it looks::
 
     [DEFAULT]
-
+    
     app.twitter.username = alfredodeza
     app.update.frequency = 60
     app.load.startup = False
@@ -61,9 +63,9 @@ Lets query them calling our keys::
 
     >>> db_conf = conf.stored_config()
     >>> db_conf['frequency']
-    60
+    60 
 
-Great, we now are making sure we have our data. We can actually get that value from anywhere
+Great, we now are making sure we have our data. We can actually get that value from anywhere 
 in our twitter app by calling it this way::
 
     db = ConfigMapper(config_db_path)
@@ -74,10 +76,10 @@ in our twitter app by calling it this way::
 
 Getting Deafults
 ---------------------
-Above we inspected an INI file with some changed values. But what happens when the user
+Above we inspected an INI file with some changed values. But what happens when the user 
 has none?
 
-Since we set our defaults, we can be sure they are right there in case our app needs
+Since we set our defaults, we can be sure they are right there in case our app needs 
 it in some sub-module::
 
     >>> db = ConfigMapper(config_db_path)
@@ -85,9 +87,9 @@ it in some sub-module::
     >>> conf['load']
     True
 
-Updating Values
+Updating Values 
 -----------------
-What if a user makes changes? We can always save and update what we read from the INI
+What if a user makes changes? We can always save and update what we read from the INI 
 file at load time, to make sure we have the latest changes from the user::
 
     conf = ConfigMapper(config_db_path)
