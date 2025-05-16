@@ -80,10 +80,10 @@ class dbdict(dict):
         """Make sure we are doing OK"""
         try:
             integrity = self.con.execute("pragma integrity_check").fetchone()
-            if integrity == (u'ok',):
+            if integrity == (u'ok',) or integrity == ('ok',):
                 return True
         except Exception as error:
-            return error
+            raise
 
 
     def _close(self):

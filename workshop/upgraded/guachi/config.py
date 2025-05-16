@@ -42,7 +42,6 @@ class DictMatch(object):
                 configuration = self.key_matcher(file_options)
             except Exception as error:
                 raise OptionConfigurationError(error)
-
         return configuration
 
 
