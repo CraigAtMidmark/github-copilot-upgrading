@@ -55,7 +55,9 @@ class TestDbdict(unittest.TestCase):
 
     def test_setitem_typeerror(self):
         foo = database.dbdict('/tmp/test_guachi')
-        self.assertRaises(sqlite3.InterfaceError, foo.__setitem__, 'bar', {'a':'b'})
+        # Accept both InterfaceError (Py2) and ProgrammingError (Py3)
+        with self.assertRaises((sqlite3.InterfaceError, sqlite3.ProgrammingError)):
+            foo.__setitem__('bar', {'a':'b'})
 
     def test_delitem_keyerror(self):
         foo = database.dbdict('/tmp/test_guachi')
@@ -101,4 +103,4 @@ class TestDbdict(unittest.TestCase):
 #        foo = database.dbdict('/tmp/test_guachi')
 #        self.assertEquals(foo._integrity_check()[0], 'file is encrypted or is not a database')
 #
-        
+
